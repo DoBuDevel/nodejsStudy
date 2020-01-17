@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>시퀄라이즈 테스트</title>
+</head>
+
+<body>
+  <h1>시퀄라이즈 테스트</h1>
+  <div>
+    <table border="1px">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>married</th>
+        <th>comment</th>
+      </tr>
+      {{#users}}
+      <form action="/seq/user" method="POST">
+        <input type="hidden" name="_method" value="put" />
+        <tr>
+          <td><input type="text" name="id" value="{{id}}"></td>
+          <td><input type="text" name="name" value="{{name}}"></td>
+          <td><input type="text" name="age" value="{{age}}"></td>
+          <td><input type="text" name="married" value="{{married}}"></td>
+          <td><input type="text" name="comment" value="{{comment}}"></td>
+          <td><button type="submit">수정</button></td>
+        </tr>
+      </form>
+      {{/users}}
+    </table>
+  </div>
+  <div>
+    <form action="/seq/user" method="POST">
+      <span><input type="text" name="name"></span><br>
+      <span><input type="text" name="age"></span><br>
+      <span><input type="text" name="married"></span><br>
+      <button type="submit">이거냐</button>
+    </form>
+  </div>
+</body>
+
+</html>
