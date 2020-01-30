@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var commentsRouter = require('./routes/comments');
 
 var connect = require('./schemas');
 
@@ -14,7 +15,7 @@ var app = express();
 connect();
 
 // view engine setup
-app.set("view engine", "ejs");
+app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(logger('dev'));
@@ -37,5 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/comments', commentsRouter);
 
 module.exports = app;
