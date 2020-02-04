@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
     res.render('mongoose', { users });
   } catch (error) {
     console.error(error);
-    next(error)
+    next(error);
   }
 });
 
