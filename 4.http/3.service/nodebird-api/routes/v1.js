@@ -31,15 +31,15 @@ router.post('/token', async (req, res) => {
     });
     return res.json({
       code: 200,
-      message: '토큰이 발급 되었습니다.',
+      message: '토큰이 발급되었습니다',
       token,
-    })
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
       code: 500,
-      message: '서버 에러'
-    })
+      message: '서버 에러',
+    });
   }
 });
 
@@ -47,7 +47,7 @@ router.get('/test', verifyToken, (req, res) => {
   res.json(req.decoded);
 });
 
-router.get('post/my', verifyToken, (req, res) => {
+router.get('/posts/my', verifyToken, (req, res) => {
   Post.findAll({ where: { userId: req.decoded.id } })
     .then((posts) => {
       console.log(posts);
