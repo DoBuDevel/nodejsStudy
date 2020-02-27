@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 
 const router = express.Router();
-const URL = 'http://localhost:8002/v1';
+const URL = 'http://localhost:8002/v2';
 
 axios.defaults.headers.origin = 'http://localhost:8003';
 
@@ -29,6 +29,16 @@ const request = async (req, api) => {
 router.get('/mypost', async (req, res, next) => {
   try {
     const result = await request(req, '/posts/my');
+    res.json(result.data);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+router.get('/myfollowing', async (req, res, next) => {
+  try {
+    const result = await request(req, '/following/my');
     res.json(result.data);
   } catch (error) {
     console.error(error);
